@@ -8,8 +8,7 @@ let package = Package(
         .library(name: "MyClient", targets: ["MyClient"]),
     ],
     dependencies: [
-        .package(name: "EventIdProvider",
-                 url: "https://github.com/SamBallantyne/EventIdProvider.git",
+        .package(url: "https://github.com/SamBallantyne/EventIdProvider.git",
                  from: "1.0.0"),
     ],
     targets: [

@@ -2,30 +2,30 @@ import SwiftUI
 import Foundation
 import EventIdProvider
 
-struct ServerResponse<T : Codable> : Codable {
-    let success: Bool
-    let data: T?
-    let error: String?
+public struct ServerResponse<T : Codable> : Codable {
+    public let success: Bool
+    public let data: T?
+    public let error: String?
 }
 
-struct ShanghaiView<T : Codable> : Codable {
-    let application: String
-    let eventId: Int
-    let viewId: String
-    let evaluated: Bool
-    let failure: String?
-    let key: String?
-    let output: T?
+public struct ShanghaiView<T : Codable> : Codable {
+    public let application: String
+    public let eventId: Int
+    public let viewId: String
+    public let evaluated: Bool
+    public let failure: String?
+    public let key: String?
+    public let output: T?
 }
 
-class ViewEndpointClient<T : Codable> : ObservableObject {
+public class ViewEndpointClient<T : Codable> : ObservableObject {
     
-    let _viewEndpointId: String
-    let _publishableKey: String
-    var _eventIdProvider: EventIdProvider
+    public let _viewEndpointId: String
+    public let _publishableKey: String
+    public let _eventIdProvider: EventIdProvider
     
-    @Published var lastValue : ServerResponse<ShanghaiView<T>>? = nil
-    @Published var isLoadingEventId : Int? = nil
+    @Published public var lastValue : ServerResponse<ShanghaiView<T>>? = nil
+    @Published public var isLoadingEventId : Int? = nil
     var lastLoadedEventId: Int? = nil
     
     private func load (eventId: Int) {
@@ -55,7 +55,7 @@ class ViewEndpointClient<T : Codable> : ObservableObject {
         }.resume()
     }
     
-    init(eventIdProvider: EventIdProvider, viewEndpointId: String, publishableKey: String) {
+    public init(eventIdProvider: EventIdProvider, viewEndpointId: String, publishableKey: String) {
         _eventIdProvider = eventIdProvider
         _viewEndpointId = viewEndpointId
         _publishableKey = publishableKey
